@@ -1,0 +1,144 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Magic 8 Ball</title>
+		<style>
+			#eight-ball{
+				margin: 0 auto;
+				width:600px;
+				height:600px;
+				background-color: black;
+				border: 1px #ddd;
+				text-align: center;	
+				padding:20px;
+				color:#ddd;
+			}
+			.innerbox{
+				margin-top:200px;
+			}
+			#question{
+				font-size: 18px;
+				font-family: sans-serif;
+			}
+			#answer{
+				text-transform: uppercase;
+				text-decoration: underline;
+				font-size: 30px;
+				font-family: serif;
+				color:#eeddff;
+				
+
+				/* 
+				Changing text color CSS Animation
+
+				URL: http://stackoverflow.com/questions/16782498/changing-text-could-animatedly-by-css3 */
+
+				-webkit-animation: color-change 1s infinite;
+    			-moz-animation: color-change 1s infinite;
+    			-o-animation: color-change 1s infinite;
+    			-ms-animation: color-change 1s infinite;
+    			animation: color-change 1s infinite;
+			}
+				@-webkit-keyframes color-change {
+			    0% { color: red; }
+			    50% { color: blue; }
+			    100% { color: red; }
+				}
+				@-moz-keyframes color-change {
+				    0% { color: red; }
+				    50% { color: blue; }
+				    100% { color: red; }
+				}
+				@-ms-keyframes color-change {
+				    0% { color: red; }
+				    50% { color: blue; }
+				    100% { color: red; }
+				}
+				@-o-keyframes color-change {
+				    0% { color: red; }
+				    50% { color: blue; }
+				    100% { color: red; }
+				}
+				@keyframes color-change {
+				    0% { color: red; }
+				    50% { color: blue; }
+				    100% { color: red; }
+				}
+		</style>
+	</head>
+
+	<body>
+		<div id="eight-ball">
+			<button onclick="shake()">Shake</button>
+			<div class="innerbox">
+				<p id="question"></p>
+				<p id="answer"></p>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		// Called Shake function when shake button is clicked.
+		function shake(){
+			var question = prompt("Ask any question.");
+			var questionText = document.getElementById('question');
+			questionText.innerHTML = question;
+		
+			// Number of possible answers
+			var numberOfAnswers = 7;
+
+			//Answers the 8 Ball can return
+			var answerOne = "YES";
+			var answerTwo = "NO";
+			var answerThree = "IN YOUR DREAMS...";
+			var answerFour = "FOR SURE !";
+			var answerFive = "I HAVE NO DOUBT.";
+			var answerSix = "YOU WISH !!!";
+			var answerSeven = "Don't Count on That";
+
+			// Answer returned by our 8 Ball
+	        var chosenAnswer = getAnswerNumber(numberOfAnswers);        
+	        displayAnswer(chosenAnswer);
+
+	        // Returns a number based on the number of sides
+	        function getAnswerNumber(answerCount){
+	            var number = getRandomInt(1,answerCount);
+	            return number;
+	        }
+
+	        // Returns a random integer between two numbers
+	        function getRandomInt(min,max){
+	            return Math.floor(Math.random() * (max - min + 1)) + min;
+	        }
+
+	        // Show our answer in the document 
+	        function displayAnswer(answer) {
+
+	            // Access the DOM element we want to to change
+	            var fortuneText = document.getElementById('answer');
+
+	            if ( answer == 1 ) {
+	                fortuneText.innerHTML = answerOne;
+	            }
+	            else if ( answer == 2 ) {
+	                fortuneText.innerHTML = answerTwo;
+	            }
+	            else if ( answer == 3 ) {
+	                fortuneText.innerHTML = answerThree;
+	            }
+	            else if ( answer == 4 ) {
+	                fortuneText.innerHTML = answerFour;
+	            }
+	            else if ( answer == 5 ) {
+	                fortuneText.innerHTML = answerFive;
+	            }
+	            else if ( answer == 6 ) {
+	                fortuneText.innerHTML = answerSix;
+	            }
+	            else if ( answer == 7 ) {
+	                fortuneText.innerHTML = answerSeven;
+	            }
+	        }
+		}
+	</script>
+</html>

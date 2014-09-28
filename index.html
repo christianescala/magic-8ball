@@ -78,6 +78,7 @@
 	</body>
 
 		<script>
+		//magic ball object with its properties 
 		var fortuneTeller = {
 			promptText:"Ask me a question",
 			answersType: "text",
@@ -91,6 +92,7 @@
 			"you wish!!!",
 			"don't count on that"
 			],
+			//function that returns a number associated to answers array index
 			getAnswer: function(){
 				var min = 1;
 				var max = this.answers.length;
@@ -98,20 +100,18 @@
 				return this.answers[index-1];
 			}
 		};
-
+		//when the shake button is clicked, shake function runs
 		function shake(){
+			//question typed is store in a variable
 			var question = prompt(fortuneTeller.promptText);
-
+			//accessing the DOM to manipulate the question in the html doc
 			var questionText = document.getElementById('question');
 			questionText.innerHTML = question;
-
+			//value returned by the getAnswer function is stored in variable
 			var randomAnswer = fortuneTeller.getAnswer();
-			//console.log(randomAnswer);
-
+			//accessing the DOM to manipulate the answer in the html doc
 			var answersText = document.getElementById('answer');
 			answersText.innerHTML = randomAnswer;
-
-
 
 		}
 

@@ -77,68 +77,48 @@
 		</div>
 	</body>
 
-	<script>
-		// Called Shake function when shake button is clicked.
+		<script>
+		var fortuneTeller = {
+			promptText:"Ask me a question",
+			answersType: "text",
+			answers : [
+			"yes",
+			"no",
+			"in your dreams...",
+			"for sure!",
+			"i have no doubt.",
+			"maybe",
+			"you wish!!!",
+			"don't count on that"
+			],
+			getAnswer: function(){
+				var min = 1;
+				var max = this.answers.length;
+				var index = Math.floor(Math.random()*(max-min+1)+min);
+				return this.answers[index-1];
+			}
+		};
+
 		function shake(){
-			var question = prompt("Ask any question.");
+			var question = prompt(fortuneTeller.promptText);
+
 			var questionText = document.getElementById('question');
 			questionText.innerHTML = question;
-		
-			// Number of possible answers
-			var numberOfAnswers = 7;
 
-			//Answers the 8 Ball can return
-			var answerOne = "YES";
-			var answerTwo = "NO";
-			var answerThree = "IN YOUR DREAMS...";
-			var answerFour = "FOR SURE !";
-			var answerFive = "I HAVE NO DOUBT.";
-			var answerSix = "YOU WISH !!!";
-			var answerSeven = "Don't Count on That";
+			var randomAnswer = fortuneTeller.getAnswer();
+			//console.log(randomAnswer);
 
-			// Answer returned by our 8 Ball
-	        var chosenAnswer = getAnswerNumber(numberOfAnswers);        
-	        displayAnswer(chosenAnswer);
+			var answersText = document.getElementById('answer');
+			answersText.innerHTML = randomAnswer;
 
-	        // Returns a number based on the number of sides
-	        function getAnswerNumber(answerCount){
-	            var number = getRandomInt(1,answerCount);
-	            return number;
-	        }
 
-	        // Returns a random integer between two numbers
-	        function getRandomInt(min,max){
-	            return Math.floor(Math.random() * (max - min + 1)) + min;
-	        }
 
-	        // Show our answer in the document 
-	        function displayAnswer(answer) {
-
-	            // Access the DOM element we want to to change
-	            var fortuneText = document.getElementById('answer');
-
-	            if ( answer == 1 ) {
-	                fortuneText.innerHTML = answerOne;
-	            }
-	            else if ( answer == 2 ) {
-	                fortuneText.innerHTML = answerTwo;
-	            }
-	            else if ( answer == 3 ) {
-	                fortuneText.innerHTML = answerThree;
-	            }
-	            else if ( answer == 4 ) {
-	                fortuneText.innerHTML = answerFour;
-	            }
-	            else if ( answer == 5 ) {
-	                fortuneText.innerHTML = answerFive;
-	            }
-	            else if ( answer == 6 ) {
-	                fortuneText.innerHTML = answerSix;
-	            }
-	            else if ( answer == 7 ) {
-	                fortuneText.innerHTML = answerSeven;
-	            }
-	        }
 		}
+
 	</script>
 </html>
+
+
+
+
+

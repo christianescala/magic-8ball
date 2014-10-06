@@ -2,6 +2,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Magic 8 Ball</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<script type="text/javascript" src="js/shake.js"></script>
 		<style>
 			#eight-ball{
 				margin: 0 auto;
@@ -78,42 +80,53 @@
 	</body>
 
 		<script>
-		//magic ball object with its properties 
-		var fortuneTeller = {
-			promptText:"Ask me a question",
-			answersType: "text",
-			answers : [
-			"yes",
-			"no",
-			"in your dreams...",
-			"for sure!",
-			"i have no doubt.",
-			"maybe",
-			"you wish!!!",
-			"don't count on that"
-			],
-			//function that returns a number associated to answers array index
-			getAnswer: function(){
-				var min = 1;
-				var max = this.answers.length;
-				var index = Math.floor(Math.random()*(max-min+1)+min);
-				return this.answers[index-1];
-			}
-		};
-		//when the shake button is clicked, shake function runs
-		function shake(){
-			//question typed is store in a variable
-			var question = prompt(fortuneTeller.promptText);
-			//accessing the DOM to manipulate the question in the html doc
-			var questionText = document.getElementById('question');
-			questionText.innerHTML = question;
-			//value returned by the getAnswer function is stored in variable
-			var randomAnswer = fortuneTeller.getAnswer();
-			//accessing the DOM to manipulate the answer in the html doc
-			var answersText = document.getElementById('answer');
-			answersText.innerHTML = randomAnswer;
 
-		}
+		window.onload = function(){
+			window.addEventListener('shake', shakeEventDidOccur, false);
+
+			//function to call when shake occurs
+			function shakeEventDidOccur (){
+				shake();
+			}
+
+			//magic ball object with its properties 
+			var fortuneTeller = {
+				promptText:"Ask me a question",
+				answersType: "text",
+				answers : [
+				"yes",
+				"no",
+				"in your dreams...",
+				"for sure!",
+				"i have no doubt.",
+				"maybe",
+				"you wish!!!",
+				"don't count on that"
+				],
+				//function that returns a number associated to answers array index
+				getAnswer: function(){
+					var min = 1;
+					var max = this.answers.length;
+					var index = Math.floor(Math.random()*(max-min+1)+min);
+					return this.answers[index-1];
+				}
+			};
+			//when the shake button is clicked, shake function runs
+			function shake(){
+				//question typed is store in a variable
+				var question = prompt(fortuneTeller.promptText);
+				//accessing the DOM to manipulate the question in the html doc
+				var questionText = document.getElementById('question');
+				questionText.innerHTML = question;
+				//value returned by the getAnswer function is stored in variable
+				var randomAnswer = fortuneTeller.getAnswer();
+				//accessing the DOM to manipulate the answer in the html doc
+				var answersText = document.getElementById('answer');
+				answersText.innerHTML = randomAnswer;
+
+			}
+
+	};
 
 	</script>
 </html>

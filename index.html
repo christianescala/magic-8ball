@@ -2,17 +2,21 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Magic 8 Ball</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<script type="text/javascript" src="js/shake.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		
 		<style>
-			#eight-ball{
+			#wrapper{
 				margin: 0 auto;
-				width:600px;
+				width: 100%;
+			}
+			#eight-ball{
+				
+				width:100%;
 				height:600px;
 				background-color: black;
 				border: 1px #ddd;
 				text-align: center;	
-				padding:20px;
 				color:#ddd;
 			}
 			.innerbox{
@@ -70,11 +74,13 @@
 	</head>
 
 	<body>
-		<div id="eight-ball">
-			<button onclick="shake()">Shake</button>
-			<div class="innerbox">
-				<p id="question"></p>
-				<p id="answer"></p>
+		<div id="wrapper">
+			<div id="eight-ball">
+				<button onclick="shake()">Shake</button>
+				<div class="innerbox">
+					<p id="question"></p>
+					<p id="answer"></p>
+				</div>
 			</div>
 		</div>
 	</body>
